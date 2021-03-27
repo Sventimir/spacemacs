@@ -37,39 +37,28 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(markdown
-     graphviz
+     python
      yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     ;; auto-completion
      ;; better-defaults
-     git
+     emacs-lisp
      helm
      tabs
-     image+
      ;; lsp
-     multiple-cursors
-     org
-     mu4e
-     pass
-     auth-source-pass
+     markdown
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     spell-checking
+     ;; spell-checking
      ;; syntax-checking
      ;; version-control
      treemacs
-     ;; programming language support
-     emacs-lisp
-     haskell
-     ocaml
-     javascript
-     python
-     idris)
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -559,10 +548,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(calendar-date-style 'iso)
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line)))
+   '(graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+ '(standard-indent 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -571,90 +560,5 @@ This function is called at the very end of Spacemacs initialization."
  )
 )
 
-(setq tab-width 2)
-
-;; Michelson support
-(setq michelson-client-command "~/work/tezos/tezos-client")
-(setq michelson-alphanet nil)
 (set-default 'truncate-lines t)           ;; disable automatic line wrappig
 
-(setq-default dotspacemacs-configuration-layers '(
-                                                  (treemacs :variables treemacs-use-git-mode 'deferred)))
-(with-eval-after-load 'treemacs
-  (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-ace)
-  (treemacs-define-RET-action 'file-node-open #'treemacs-visit-node-ace))
-
-;; Mu4e config
-(require 'smtpmail)
-(setq mu4e-get-mail-command "offlineimap -o"
-      mu4e-update-interval (* 10 60)
-      mu4e-enable-notifications t
-      mu4e-view-show-addresses 't
-      message-send-mail-function 'smtpmail-send-it
-      auth-sources '(password-store))
-
-(setq-default dotspacemacs-configuration-layers
-              '((mu4e :variables
-                      mu4e-enable-async-operations t)))
-
-
-(with-eval-after-load 'mu4e
-  (setq mu4e-contexts
-        `(
-        ,(make-mu4e-context
-          :name "Sventimir"
-          :match-func
-            (lambda (msg)
-              (when msg
-                (string-prefix-p "/sventimir" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "svantimir@gmail.com")
-                  (user-full-name    . "Sventimir")
-                  (smtpmail-smtp-server  . "smtp.gmail.com")
-                  (smtpmail-smtp-user . "svantimir@gmail.com")
-                  (smtpmail-smtp-service . 587)
-                  (smtpmail-stream-type  . starttls)
-                  (mu4e-drafts-folder  . "/sventimir/[Gmail].Wersje robocze")
-                  (mu4e-sent-folder  . "/sventimir/[Gmail].Wa&AXw-ne")
-                  (mu4e-refile-folder  . "/sventimir/[Gmail].Wszystkie")
-                  (mu4e-trash-folder  . "/sventimir/[Gmail].Kosz")))
-
-        ,(make-mu4e-context
-          :name "MarcinPastudzki"
-          :match-func
-            (lambda (msg)
-              (when msg
-                (string-prefix-p "/marcin-pastudzki" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "marcin.pastudzki@gmail.com")
-                  (user-full-name    . "Marcin Pastudzki")
-                  (smtpmail-smtp-server  . "smtp.gmail.com")
-                  (smtpmail-smtp-user . "marcin.pastudzki@gmail.com")
-                  (smtpmail-smtp-service . 587)
-                  (smtpmail-stream-type  . starttls)
-                  (mu4e-drafts-folder  . "/marcin-pastudzki/[Gmail].Wersje robocze")
-                  (mu4e-sent-folder  . "/marcin-pastudzki/[Gmail].Wa&AXw-ne")
-                  (mu4e-refile-folder  . "/marcin-pastudzki/[Gmail].Wszystkie")
-                  (mu4e-trash-folder  . "/marcin-pastudzki/[Gmail].Kosz")))
-
-        ,(make-mu4e-context
-          :name "TQ"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/tq" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "marcin.pastudzki@tqtezos.com")
-                  (user-full-name    . "Marcin Pastudzki")
-                  (smtpmail-smtp-server  . "smtp.gmail.com")
-                  (smtpmail-smtp-user . "marcin.pastudzki@tqtezos.com")
-                  (smtpmail-smtp-service . 587)
-                  (smtpmail-stream-type  . starttls)
-                  (mu4e-drafts-folder  . "/tq/[Gmail].Drafts")
-                  (mu4e-sent-folder  . "/tq/[Gmail].Sent Mail")
-                  (mu4e-trash-folder  . "/tq/[Gmail].Thash")))
-        ))
-  )
-
-;; Spell-checking
-(setq ispell-program-name "hunspell")
-
-;; Keyboard bindings
-(global-set-key (kbd "C-c g") 'magit)
