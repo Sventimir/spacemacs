@@ -56,6 +56,7 @@ This function should only modify configuration layer settings."
      mu4e
      pass
      auth-source-pass
+     spacemacs-purpose
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
