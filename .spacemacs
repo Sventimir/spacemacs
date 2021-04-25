@@ -564,27 +564,19 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    '(graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
- '(rcirc-default-full-name "Sventimir")
- '(rcirc-default-nick "sventimir")
- '(rcirc-default-user-name "sventimir")
  '(safe-local-variable-values
    '((eval progn
-           (setenv "OPAM_SWITCH_PREFIX" "/home/sven/code/ocaml/avstudio/_opam")
-           (setenv "CAML_LD_LIBRARY_PATH" "/home/sven/code/ocaml/avstudio/_opam/lib/stublibs:/home/sven/code/ocaml/avstudio/_opam/lib/ocaml/stublibs:/home/sven/code/ocaml/avstudio/_opam/lib/ocaml")
-           (setenv "OCAML_TOPLEVEL_PATH" "/home/sven/code/ocaml/avstudio/_opam/lib/toplevel")
-           (setenv "PKG_CONFIG_PATH" "/home/sven/code/ocaml/avstudio/_opam/lib/pkgconfig")
-           (setenv "MANPATH" ":/home/sven/code/ocaml/avstudio/_opam/man")
-           (setenv "PATH" "/home/sven/code/ocaml/avstudio/_opam/bin:/home/sven/.opam/tezos-test/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/sven/code/bash"))
+           (opam-update-env "/home/sven/work/tezos/_opam")
+           (setenv "WORKDIR" "/home/sven/work/")
+           (setenv "SRCDIR" "/home/sven/work/tezos/src"))
      (eval progn
-           (setenv "OPAM_SWITCH_PREFIX" "/home/sven/work/tezos/_opam")
-           (setenv "CAML_LD_LIBRARY_PATH" "/home/sven/work/tezos/_opam/lib/stublibs:/home/sven/work/tezos/_opam/lib/ocaml/stublibs:/home/sven/work/tezos/_opam/lib/ocaml")
-           (setenv "OCAML_TOPLEVEL_PATH" "/home/sven/work/tezos/_opam/lib/toplevel")
-           (setenv "PKG_CONFIG_PATH" "/home/sven/work/tezos/_opam/lib/pkgconfig")
-           (setenv "MANPATH" ":/home/sven/work/tezos/_opam/man")
-           (setenv "PATH" "/home/sven/work/tezos/_opam/bin:/home/sven/.opam/tezos-test/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/sven/code/bash"))
+           (set-opam-env "/home/sven/work/tezos/_opam")
+           (setenv "WORKDIR" "/home/sven/work/")
+           (setenv "SRCDIR" "/home/sven/work/tezos/src"))
      (javascript-backend . tide)
      (javascript-backend . tern)
-     (javascript-backend . lsp))))
+     (javascript-backend . lsp)))
+ '(utop-command "opam config exec -- dune utop . -- -emacs"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -680,3 +672,6 @@ This function is called at the very end of Spacemacs initialization."
 
 ;; Keyboard bindings
 (global-set-key (kbd "C-c g") 'magit)
+
+;; Load libs
+(load-library "sven-stdlib")
