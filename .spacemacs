@@ -4,7 +4,6 @@
 
 ;; enable ocaml mode
 (add-to-list 'load-path "/home/sven/.opam/tezos/share/emacs/site-lisp")
-(require 'ocp-indent)
 
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -49,13 +48,11 @@ This function should only modify configuration layer settings."
      git
      helm
      tabs
-     image+
      ;; lsp
      multiple-cursors
      org
      mu4e
      pass
-     auth-source-pass
      spacemacs-purpose
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -89,7 +86,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(flycheck-ocaml)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -668,7 +665,8 @@ This function is called at the very end of Spacemacs initialization."
   )
 
 ;; Spell-checking
-(setq ispell-program-name "hunspell")
+(setq ispell-program-name "hunspell"
+      ispell-local-dictionary "en_GB")
 
 ;; Keyboard bindings
 (global-set-key (kbd "C-c g") 'magit)
