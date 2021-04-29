@@ -3,7 +3,7 @@
 ;; It must be stored in your home directory.
 
 ;; enable ocaml mode
-(add-to-list 'load-path "/home/sven/.opam/tezos/share/emacs/site-lisp")
+(add-to-list 'load-path "/home/sven/.opam/default/share/emacs/site-lisp")
 
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -563,10 +563,7 @@ This function is called at the very end of Spacemacs initialization."
    '(graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
  '(safe-local-variable-values
    '((eval progn
-           (opam-update-env "/home/sven/work/tezos/_opam")
-           (setenv "WORKDIR" "/home/sven/work/")
-           (setenv "SRCDIR" "/home/sven/work/tezos/src"))
-     (eval progn
+           (require 'ocp-indent)
            (set-opam-env "/home/sven/work/tezos/_opam")
            (setenv "WORKDIR" "/home/sven/work/")
            (setenv "SRCDIR" "/home/sven/work/tezos/src"))
