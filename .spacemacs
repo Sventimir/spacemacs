@@ -67,8 +67,10 @@ This function should only modify configuration layer settings."
      ocaml
      javascript
      python
-     idris)
-
+     idris
+     rust
+     (scheme :variables
+             scheme-implementations '(chez)))
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -542,7 +544,8 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq idris-interpreter-path "/home/sven/.idris2/bin/idris2")
-  ;; (setq idris-interpreter-path "/usr/bin/idris")
+  (setq-default header-line-format
+                '((which-func-mode ("" which-func-format " "))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -558,18 +561,31 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(calendar-date-style 'iso)
+ '(clean-aindent-mode t)
  '(evil-want-Y-yank-to-eol nil)
+ '(geiser-active-implementations '(chez))
+ '(geiser-default-implementation 'chez)
+ '(geiser-implementations-alist nil)
+ '(indent-tabs-mode nil)
+ '(js-indent-level 2)
+ '(json-reformat:indent-width 2)
  '(package-selected-packages
-   '(graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+ '(geiser-chez geben drupal-mode composer graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+ '(python-indent-guess-indent-offset nil)
  '(safe-local-variable-values
    '((eval progn
            (require 'ocp-indent)
            (set-opam-env "/home/sven/work/tezos/_opam")
            (setenv "WORKDIR" "/home/sven/work/")
-           (setenv "SRCDIR" "/home/sven/work/tezos/src"))
+           (setenv "SRCDIR" "/home/sven/work/tezos/src")
+           (defun tocqueville-group nil "Insert Copyright line for TQ."
+                  (interactive)
+                  (insert "(* Copyright (c) 2021 Tocqueville Group, Inc. <contact@tezos.com>            *)
+")))
      (javascript-backend . tide)
      (javascript-backend . tern)
      (javascript-backend . lsp)))
+ '(tab-always-indent 'complete)
  '(utop-command "opam config exec -- dune utop . -- -emacs"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -661,12 +677,33 @@ This function is called at the very end of Spacemacs initialization."
         ))
   )
 
+;; Utility functions
+(defun insert-merlin-type ()
+  "Copies the contents of *merlin-types* buffer and pastes it s the point."
+  (interactive)
+  (let ((type (with-current-buffer "*merlin-types*" (buffer-string))))
+    (insert type)))
+
+;; Configure modes
+(defun config-org-mode ()
+  (progn
+    (local-set-key (kbd "C-c b") 'spacemacs/org-bold)
+    (local-set-key (kbd "C-c i") 'spacemacs/org-italic)
+    (local-set-key (kbd "C-c u") 'spacemacs/org-underline)))
+
+(defun config-tuareg-mode ()
+  (progn
+    (which-function-mode 1)
+    (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode "g t" 'insert-merlin-type)))
+
 ;; Spell-checking
 (setq ispell-program-name "hunspell"
       ispell-local-dictionary "en_GB")
 
-;; Keyboard bindings
-(global-set-key (kbd "C-c g") 'magit)
+;; Hooks
+(add-hook 'tuareg-mode-hook 'config-tuareg-mode)
+(add-hook 'haskell-mode-hook (which-function-mode 1))
+(add-hook 'org-mode-hook #'config-org-mode)
 
 ;; Load libs
 (load-library "sven-stdlib")
