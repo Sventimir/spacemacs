@@ -35,7 +35,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(markdown
+   '(csv
+     markdown
      graphviz
      yaml
      ;; ----------------------------------------------------------------
@@ -575,178 +576,21 @@ This function is called at the very end of Spacemacs initialization."
  '(json-reformat:indent-width 4)
  '(magit-diff-refine-hunk t)
  '(package-selected-packages
-   '(geiser-chez
-     geben
-     composer
-     graphviz-dot-mode
-     yapfify
-     stickyfunc-enhance
-     sphinx-doc
-     pytest
-     pyenv-mode
-     py-isort
-     poetry
-     pippel
-     pipenv
-     pyvenv
-     pip-requirements
-     lsp-python-ms
-     lsp-pyright
-     live-py-mode
-     importmagic
-     epc
-     ctable
-     concurrent
-     helm-pydoc
-     helm-cscope
-     xcscope
-     cython-mode
-     company-anaconda
-     blacken anaconda-mode
-     pythonic
-     yaml-mode
-     web-beautify
-     tern
-     prettier-js
-     nodejs-repl
-     livid-mode
-     skewer-mode
-     js2-refactor
-     multiple-cursors
-     js2-mode
-     js-doc
-     import-js
-     grizzl
-     impatient-mode
-     simple-httpd
-     dap-mode
-     lsp-treemacs
-     bui
-     add-node-modules-path
-     deferred
-     idris-mode
-     prop-menu
-     utop
-     tuareg
-     caml
-     ocp-indent
-     ocamlformat
-     merlin-eldoc
-     helm-gtags
-     ggtags
-     flycheck-ocaml
-     merlin
-     dune
-     counsel-gtags
-     counsel
-     swiper
-     ivy
-     company
-     ws-butler
-     writeroom-mode
-     winum
-     which-key
-     volatile-highlights
-     vi-tilde-fringe
-     uuidgen
-     use-package
-     undo-tree
-     treemacs-projectile
-     treemacs-persp
-     treemacs-icons-dired
-     treemacs-evil
-     toc-org
-     symon
-     symbol-overlay
-     string-inflection
-     spaceline-all-the-icons
-     restart-emacs
-     request
-     rainbow-delimiters
-     popwin
-     pcre2el
-     password-generator
-     paradox
-     overseer
-     org-superstar
-     open-junk-file
-     nameless
-     move-text
-     macrostep
-     lorem-ipsum
-     link-hint
-     indent-guide
-     hybrid-mode
-     hungry-delete
-     hl-todo
-     highlight-parentheses
-     highlight-numbers
-     highlight-indentation
-     helm-xref
-     helm-themes
-     helm-swoop
-     helm-purpose
-     helm-projectile
-     helm-org
-     helm-mode-manager
-     helm-make
-     helm-ls-git
-     helm-flx
-     helm-descbinds
-     helm-ag
-     google-translate
-     golden-ratio
-     font-lock+
-     flycheck-package
-     flycheck-elsa
-     flx-ido
-     fancy-battery
-     eyebrowse
-     expand-region
-     evil-visualstar
-     evil-visual-mark-mode
-     evil-unimpaired
-     evil-tutor
-     evil-textobj-line
-     evil-surround
-     evil-numbers
-     evil-nerd-commenter
-     evil-mc
-     evil-matchit
-     evil-lisp-state
-     evil-lion
-     evil-indent-plus
-     evil-iedit-state
-     evil-goggles
-     evil-exchange
-     evil-escape
-     evil-ediff
-     evil-easymotion
-     evil-collection
-     evil-cleverparens
-     evil-args
-     evil-anzu
-     eval-sexp-fu
-     emr
-     elisp-slime-nav
-     editorconfig
-     dumb-jump
-     dotenv-mode
-     dired-quick-sort
-     diminish
-     devdocs
-     define-word
-     column-enforce-mode
-     clean-aindent-mode
-     centered-cursor-mode
-     auto-highlight-symbol
-     auto-compile
-     aggressive-indent
-     ace-link
-     ace-jump-helm-line))
+   '(csv-mode geiser-chez geben composer graphviz-dot-mode yapfify stickyfunc-enhance sphinx-doc pytest pyenv-mode py-isort poetry pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent helm-pydoc helm-cscope xcscope cython-mode company-anaconda blacken anaconda-mode pythonic yaml-mode web-beautify tern prettier-js nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode simple-httpd dap-mode lsp-treemacs bui add-node-modules-path deferred idris-mode prop-menu utop tuareg caml ocp-indent ocamlformat merlin-eldoc helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
  '(python-indent-guess-indent-offset nil)
+ '(racer-rust-src-path
+   "/home/sven/.rustup/toolchains/1.44.0-x86_64-unknown-linux-gnu/lib/rustlib/src")
  '(safe-local-variable-values
    '((eval progn
+           (require 'ocp-indent)
+           (set-opam-env "/home/sven/work/tezos/_opam")
+           (setenv "WORKDIR" "/home/sven/work/")
+           (setenv "SRCDIR" "/home/sven/work/tezos/src")
+           (defun copyright-nl nil "Insert Copyright line for Nomadic Labs."
+                  (interactive)
+                  (insert "(* Copyright (c) 2021 Nomadic Labs <contact@nomadic-labs.com>                *)
+")))
+     (eval progn
            (require 'ocp-indent)
            (set-opam-env "/home/sven/work/tezos/_opam")
            (setenv "WORKDIR" "/home/sven/work/")
@@ -771,7 +615,7 @@ This function is called at the very end of Spacemacs initialization."
 (setq tab-width 2)
 
 ;; Michelson support
-(setq michelson-client-command "~/work/tezos/tezos-client"
+(setq michelson-client-command "/home/sven/work/tezos/tezos-client --base-dir /tmp/mockup --mode mockup --protocol ProtoALphaALphaALphaALphaALphaALphaALphaALphaDdp3zK"
       michelson-alphanet nil)
 
 (set-default 'truncate-lines t)           ;; disable automatic line wrappig
@@ -833,20 +677,20 @@ This function is called at the very end of Spacemacs initialization."
                   (mu4e-trash-folder  . "/marcin-pastudzki/[Gmail].Kosz")))
 
         ,(make-mu4e-context
-          :name "TQ"
+          :name "NomadicLabs"
           :match-func
           (lambda (msg)
             (when msg
-              (string-prefix-p "/tq" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "marcin.pastudzki@tqtezos.com")
+              (string-prefix-p "/nomadic-labs" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "marcin.pastudzki@nomadic-labs.com")
                   (user-full-name    . "Marcin Pastudzki")
-                  (smtpmail-smtp-server  . "smtp.gmail.com")
-                  (smtpmail-smtp-user . "marcin.pastudzki@tqtezos.com")
-                  (smtpmail-smtp-service . 587)
+                  (smtpmail-smtp-server  . "localhost")
+                  (smtpmail-smtp-user . "marcin.pastudzki@nomadic-labs.com")
+                  (smtpmail-smtp-service . 1025)
                   (smtpmail-stream-type  . starttls)
-                  (mu4e-drafts-folder  . "/tq/[Gmail].Drafts")
-                  (mu4e-sent-folder  . "/tq/[Gmail].Sent Mail")
-                  (mu4e-trash-folder  . "/tq/[Gmail].Thash")))
+                  (mu4e-drafts-folder  . "/nomadic-labs/drafts")
+                  (mu4e-sent-folder  . "/nomadic-labs/sent")
+                  (mu4e-trash-folder  . "/nomadic-labs/trash")))
         ))
   )
 
