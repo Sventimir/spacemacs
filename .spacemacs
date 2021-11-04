@@ -73,6 +73,7 @@ This function should only modify configuration layer settings."
      python
      idris
      rust
+     shell-scripts
      (scheme :variables
              scheme-implementations '(chez)))
 
@@ -614,9 +615,23 @@ This function is called at the very end of Spacemacs initialization."
 
 (setq tab-width 2)
 
+(defun michelson-with-mockup (&optional protocol)
+  "Set Michelson mode to work in mockup mode."
+  (interactive "sProtocol to use (default: Alpha):")
+  (setq michelson-client-command
+        (format "/home/sven/work/tezos/tezos-client --mode mockup --protocol %s"
+                (or protocol "ProtoALphaALphaALphaALphaALphaALphaALphaALphaDdp3zK"))))
+
+(defun michelson-with-node (&optional host)
+  "Set Michelson mode to work with given Tezos node."
+  (interactive "sNode's hostname and port:")
+  (setq michelson-client-command
+        (format "/home/sven/work/tezos/tezos-client -E http://%s"
+                (or host "localhost:8732"))))
+
 ;; Michelson support
-(setq michelson-client-command "/home/sven/work/tezos/tezos-client --base-dir /tmp/mockup --mode mockup --protocol ProtoALphaALphaALphaALphaALphaALphaALphaALphaDdp3zK"
-      michelson-alphanet nil)
+(setq michelson-alphanet nil)
+(michelson-with-mockup)
 
 (set-default 'truncate-lines t)           ;; disable automatic line wrappig
 
@@ -677,20 +692,21 @@ This function is called at the very end of Spacemacs initialization."
                   (mu4e-trash-folder  . "/marcin-pastudzki/[Gmail].Kosz")))
 
         ,(make-mu4e-context
-          :name "NomadicLabs"
+          :name "Lambda-coins"
           :match-func
           (lambda (msg)
             (when msg
-              (string-prefix-p "/nomadic-labs" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "marcin.pastudzki@nomadic-labs.com")
+              (string-prefix-p "/lambda-coins" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "marcin.pastudzki@lambda-coins.com")
                   (user-full-name    . "Marcin Pastudzki")
-                  (smtpmail-smtp-server  . "localhost")
-                  (smtpmail-smtp-user . "marcin.pastudzki@nomadic-labs.com")
-                  (smtpmail-smtp-service . 1025)
+                  (smtpmail-smtp-server  . "smtp.gmail.com")
+                  (smtpmail-smtp-user . "marcin.pastudzki@lambda-coins.com")
+                  (smtpmail-smtp-service . 587)
                   (smtpmail-stream-type  . starttls)
-                  (mu4e-drafts-folder  . "/nomadic-labs/drafts")
-                  (mu4e-sent-folder  . "/nomadic-labs/sent")
-                  (mu4e-trash-folder  . "/nomadic-labs/trash")))
+                  (mu4e-drafts-folder  . "/lambda-coins/[Gmail].Wersje robocze")
+                  (mu4e-sent-folder  . "/lambda-coins/[Gmail].Wa&AXw-ne")
+                  (mu4e-refile-folder  . "/lambda-coins/[Gmail].Wszystkie")
+                  (mu4e-trash-folder  . "/lambda-coins/[Gmail].Kosz")))
         ))
   )
 
